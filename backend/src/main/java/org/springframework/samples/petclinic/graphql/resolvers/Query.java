@@ -18,6 +18,7 @@ package org.springframework.samples.petclinic.graphql.resolvers;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.google.common.collect.Lists;
 
+import graphql.schema.DataFetchingEnvironment;
 import org.springframework.samples.petclinic.graphql.types.OwnerFilter;
 import org.springframework.samples.petclinic.graphql.types.VisitConnection;
 import org.springframework.samples.petclinic.model.*;
@@ -53,7 +54,8 @@ public class Query implements GraphQLQueryResolver {
         return Lists.newArrayList(petTypeRepository.findAll());
     }
 
-    public List<Vet> vets() {
+    public List<Vet> vets(DataFetchingEnvironment env) {
+        System.out.println("Hello env"+env);
         return Lists.newArrayList(vetRepository.findAll());
     }
 
@@ -61,7 +63,8 @@ public class Query implements GraphQLQueryResolver {
         return Lists.newArrayList(ownerRepository.findAll());
     }
 
-    public Owner owner(int id) {
+    public Owner owner(int id, DataFetchingEnvironment env) {
+        System.out.println("Hello env"+env);
         return ownerRepository.findById(id);
     }
 

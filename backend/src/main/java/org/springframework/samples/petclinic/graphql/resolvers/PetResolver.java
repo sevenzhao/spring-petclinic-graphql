@@ -9,8 +9,7 @@ import org.springframework.stereotype.Component;
  * @author Nils Hartmann (nils@nilshartmann.net)
  */
 @Component
-public class
-PetResolver implements GraphQLResolver<Pet> {
+public class PetResolver implements GraphQLResolver<Pet> {
     public VisitConnection visits(Pet pet) {
         return new VisitConnection(pet.getVisits());
     }
